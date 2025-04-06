@@ -1,3 +1,14 @@
+:root {
+
+  --clr-blue-200: hsl(193, 38%, 86%);
+  --clr-green-300: hsl(150, 100%, 66%);
+
+  --clr-neutral-blue-600: hsl(217, 19%, 38%);
+  --clr-neutral-blue-900: hsl(217, 19%, 24%);
+  --clr-neutral-blue-950: hsl(218, 23%, 16%);
+
+}
+
 /* RESET */
 
 /* Box sizing rules */
@@ -72,4 +83,120 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
+}
+
+
+/* GLOBAL */
+
+body { 
+  background-color: var(--clr-neutral-blue-950);
+  color: var(--clr-blue-200);
+
+  font-family: 'Manrope', sans-serif;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* LAYOUT */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+
+}
+
+main {
+  margin-inline: auto;
+  max-inline-size: 900px;
+}
+
+.advice-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
+#getQuoteBtn { 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: -2.5em;
+}
+
+/* CARD */
+
+.advice-card {
+  background-color: var(--clr-neutral-blue-900);
+  box-shadow: 0 0 48px var(--clr-neutral-blue-950);
+  padding: 3em;
+  border-radius: 24px;
+  max-height: 600px;
+  width: auto;
+}
+
+.advice-id {
+  color: var(--clr-green-300);
+}
+
+@media (width < 600px) {
+  .divider img {
+    transform: scale(1.5);
+    width: 80%;
+  }
+}
+
+#quoteBox {
+  margin-block: 2em;
+  text-align: center;
+  text-wrap: balance;
+
+  h2 {
+    font-size: clamp(2em, 3vw, 3em);
+    font-weight: 800;
+  }
+}
+
+#getQuoteBtn { 
+  background-color: var(--clr-green-300);
+  border-radius: 100%;
+  height: 5em;
+  width: auto;
+  aspect-ratio: 1/1;
+
+  img {
+    height: 40%;
+    width: auto;
+    display: block;
+  }
+
+}
+
+.divider {
+  margin-block: 2em;
+}
+
+#langButton {
+  display: inline;
+  height: 2em;
+  width: auto;
+  font-size: 2em;
 }
