@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const API_URL = "https://quotes.stoicaemanuelnicolae.workers.dev";
+const API_URL = "https://quotes.emanuel-s.workers.dev";
 
 async function getQuote() {
   const lang = languages[currentLangIndex];
