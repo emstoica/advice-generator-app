@@ -158,6 +158,11 @@ main {
   @media (width < 660px) {
     padding: 1em;
   }
+
+ /* Smoother transition with cubic-bezier for more natural timing */
+  transition: max-height 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              padding 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              box-shadow 0.5s ease-in-out;
 }
 
 .advice-id {
