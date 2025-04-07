@@ -335,6 +335,9 @@ main {
   
 }
 
+.attribution {
+  text-wrap: balance;
+}
 
 .attribution a {
   text-decoration: none;
