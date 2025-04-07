@@ -114,12 +114,12 @@ async function getQuote() {
 }
 
 const button = document.getElementById('getQuoteBtn');
-const svg = button.querySelector("svg");
-let isSpinning = false; // Track if the animation is running
+const img = button.querySelector('img'); // <-- image tag with the SVG
+let isSpinning = false;
 
 // Function to handle the spinning animation
 const startSpin = () => {
-  if (isSpinning) return; // Prevent starting multiple animations
+  if (isSpinning) return;
   isSpinning = true;
 
   button.style.transition = 'transform 2s linear, box-shadow 2s linear';
@@ -131,37 +131,32 @@ const startSpin = () => {
     button.style.transform = 'rotate(0deg) scale(1)';
     button.style.boxShadow = '0 0 16px var(--clr-green-300)';
     isSpinning = false;
-  }, 1200); // Match this with the transition duration
+  }, 1200);
 };
 
-// Combined handler for both click and touch
-const handleQuoteButtonPress = () => {
+// Function to trigger both the animation and the quote fetch
+const handleQuoteButtonPress = (e) => {
+  e.preventDefault(); // prevent long-press selections, etc.
   startSpin();
   getQuote();
 };
 
-// Click (desktop)
+// Desktop and mobile support
 button.addEventListener('click', handleQuoteButtonPress);
+button.addEventListener('touchend', handleQuoteButtonPress);
 
-// Touch (mobile)
-button.addEventListener('touchend', (e) => {
-  e.preventDefault(); // Prevents duplicate click after touch
-  handleQuoteButtonPress();
-});
-
-// Hover effect (desktop)
+// Optional: hover effect (desktop only)
 button.addEventListener('mouseenter', () => {
   button.style.boxShadow = '0 0 16px var(--clr-green-300)';
 });
-
 button.addEventListener('mouseleave', () => {
   if (!isSpinning) {
     button.style.boxShadow = '0 0 8px var(--clr-green-300)';
   }
 });
 
-// Prevent selection on SVG (mobile long-press fix)
-svg.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-});
+// Prevent long press selection or drag on SVG image
+img.addEventListener('touchstart', (e) => e.preventDefault());
+img.addEventListener('dragstart', (e) => e.preventDefault());
+
   
