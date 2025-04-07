@@ -191,7 +191,7 @@ main {
   }
 }
 
-#getQuoteBtn { 
+/* #getQuoteBtn { 
   background-color: var(--clr-green-300);
   border-radius: 100%;
   height: 5em;
@@ -227,7 +227,37 @@ main {
     box-shadow: 0 0 48px var(--clr-green-300);
 
   }
+} */
+
+#getQuoteBtn { 
+  background-color: var(--clr-green-300);
+  border-radius: 100%;
+  height: 5em;
+  width: auto;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Transition for shadow */
 }
+
+#getQuoteBtn img {
+  height: 40%;
+  width: auto;
+  display: block;
+}
+
+/* Box shadow on hover */
+#getQuoteBtn:hover {
+  box-shadow: 0 0 16px var(--clr-green-300);
+}
+
+/* Box shadow when active */
+#getQuoteBtn:active {
+  box-shadow: 0 0 48px var(--clr-green-300);
+}
+
 
 .divider {
   margin-block: 2em;
@@ -239,12 +269,15 @@ main {
 
 #langButton {
   display: block;
-  border: none;
-  border-color: transparent;
-  background-color: transparent;
   font-size: 3em;
-
-
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
 }
 
 @media (width < 660px) {
