@@ -255,6 +255,12 @@ main {
   height: 40%;
   width: auto;
   display: block;
+
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  
 }
 
 /* Box shadow on hover */
