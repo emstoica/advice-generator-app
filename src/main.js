@@ -74,16 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// const API_URL = "https://quotes.emanuel-s.workers.dev";
+const API_URL = "https://quotes.emanuel-s.workers.dev";
 
 async function getQuote() {
   const lang = languages[currentLangIndex];
   const quoteBox = document.getElementById("quoteBox");
   
   try {
-    const res = await fetch(`${window.location.origin}/quote?lang=${lang}`);
-
-    // const res = await fetch(`${API_URL}/quote?lang=${lang}`);
+    const res = await fetch(`${API_URL}/quote?lang=${lang}`);
     
     // Handle response status other than 2xx
     if (!res.ok) {
