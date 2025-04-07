@@ -113,51 +113,55 @@ async function getQuote() {
   }
 }
 
-document.getElementById("getQuoteBtn").addEventListener("click", getQuote); 
-
 const button = document.getElementById('getQuoteBtn');
-  let isSpinning = false; // Track if the animation is running
-  
-  // Function to handle the spinning animation
-  const startSpin = () => {
-    if (isSpinning) return; // Prevent starting multiple animations
-    isSpinning = true;
+const svg = button.querySelector("svg");
+let isSpinning = false; // Track if the animation is running
 
-    button.style.transition = 'transform 2s linear, box-shadow 2s linear'; // Set to 2s
-    button.style.transform = 'rotate(360deg) scale(1.2)';
-    button.style.boxShadow = '0 0 48px var(--clr-green-300)';
+// Function to handle the spinning animation
+const startSpin = () => {
+  if (isSpinning) return; // Prevent starting multiple animations
+  isSpinning = true;
 
-    // Reset animation after it completes
-    setTimeout(() => {
-      button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-      button.style.transform = 'rotate(0deg) scale(1)';
-      button.style.boxShadow = '0 0 16px var(--clr-green-300)';
-      isSpinning = false;
-    }, 1200); // Reset after 2s (animation duration)
-  };
+  button.style.transition = 'transform 2s linear, box-shadow 2s linear';
+  button.style.transform = 'rotate(360deg) scale(1.2)';
+  button.style.boxShadow = '0 0 48px var(--clr-green-300)';
 
-  // Adding click event to trigger the animation
-  button.addEventListener('click', startSpin);
-
-  // Adding hover effect manually with JS (in case it's needed for mobile compatibility)
-  button.addEventListener('mouseenter', () => {
+  setTimeout(() => {
+    button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+    button.style.transform = 'rotate(0deg) scale(1)';
     button.style.boxShadow = '0 0 16px var(--clr-green-300)';
-  });
+    isSpinning = false;
+  }, 1200); // Match this with the transition duration
+};
 
-  button.addEventListener('mouseleave', () => {
-    if (!isSpinning) {
-      button.style.boxShadow = '0 0 8px var(--clr-green-300)';
-    }
-  });
+// Combined handler for both click and touch
+const handleQuoteButtonPress = () => {
+  startSpin();
+  getQuote();
+};
 
-  // Prevent text or SVG selection on long press
-  button.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // Prevents the selection issue on iPhone
-    startSpin();
-  });
+// Click (desktop)
+button.addEventListener('click', handleQuoteButtonPress);
 
-  button.addEventListener('touchend', (e) => {
-    e.preventDefault();
-  });
+// Touch (mobile)
+button.addEventListener('touchend', (e) => {
+  e.preventDefault(); // Prevents duplicate click after touch
+  handleQuoteButtonPress();
+});
 
+// Hover effect (desktop)
+button.addEventListener('mouseenter', () => {
+  button.style.boxShadow = '0 0 16px var(--clr-green-300)';
+});
+
+button.addEventListener('mouseleave', () => {
+  if (!isSpinning) {
+    button.style.boxShadow = '0 0 8px var(--clr-green-300)';
+  }
+});
+
+// Prevent selection on SVG (mobile long-press fix)
+svg.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+});
   
