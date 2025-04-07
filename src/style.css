@@ -23,6 +23,9 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  
+  background-color: var(--clr-neutral-blue-950);
+
 }
 
 /* Remove default margin in favour of better control in authored CSS */
