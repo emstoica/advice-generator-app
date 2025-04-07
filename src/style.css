@@ -149,32 +149,28 @@ main {
   box-shadow: 16px 16px 48px var(--clr-neutral-blue-950);
   padding: 3em;
   border-radius: 24px;
-  max-height: 600px;
-  width: auto;
-
+  
   margin-left: 2em;
   margin-right: 2em;
 
-  @media (width < 660px) {
-    padding: 1em;
+  @media (width > 1024px) {
+    min-width: 800px;
+    min-height: 520px;
+    
+    transition: all 1.5s ease-in-out; /* Smooth transition for all properties */
   }
 
- /* Smoother transition with cubic-bezier for more natural timing */
-  transition: max-height 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
-              padding 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
-              box-shadow 0.5s ease-in-out;
+  @media (width < 660px) {
+    padding: 8px;
+    margin-left: .5em;
+    margin-right: .5em;
+  }
 }
 
 .advice-id {
   color: var(--clr-green-300);
 }
 
-@media (width < 660px) {
-  .divider img {
-    transform: scale(1.5);
-    width: 60%;
-  }
-}
 
 #quoteBox {
   margin-block: 2em;
@@ -191,7 +187,7 @@ main {
 
   }
 
-  @media (width < 660px) {
+  @media (width < 1024px) {
     margin-block: 1em;
   }
 }
@@ -245,6 +241,11 @@ main {
   align-items: center;
   cursor: pointer;
   transition: box-shadow 0.3s ease; /* Transition for shadow */
+
+  @media (width < 660px) {
+    height:4em;
+    margin-bottom: 8px;
+  }
 }
 
 #getQuoteBtn img {
@@ -269,6 +270,25 @@ main {
 
   @media (width < 660px) {
     margin: 1em 0 3em 0;
+  }
+}
+
+.divider img {
+  transform: scale(1.5);
+  width: 90%;
+}
+
+@media (width < 1024px) {
+  .divider img {
+    transform: scale(1.5);
+    width: 70%;
+  }
+}
+
+@media (width < 660px) {
+  .divider img {
+    transform: scale(1.5);
+    width: 60%;
   }
 }
 

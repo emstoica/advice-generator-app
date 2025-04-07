@@ -1,15 +1,19 @@
 const translations = {
   en: {
-    advice: "Advice #101"
+    advice: "Advice #101",
+    quote: "The only limit to our realization of tomorrow is our doubts of today."
   },
   ro: {
-    advice: "Citat motivațional #101"
+    advice: "Citat motivațional #101",
+    quote: "Singura limită a realizării de mâine sunt îndoielile noastre de astăzi."
   },
   es: {
-    advice: "Consejo #101"
+    advice: "Consejo #101",
+    quote: "El único límite para nuestra realización de mañana son nuestras dudas de hoy."
   },
   fr: {
-    advice: "Conseil #101"
+    advice: "Conseil #101",
+    quote: "La seule limite à notre réalisation de demain est nos doutes d'aujourd'hui."
   }
 };
 
@@ -18,7 +22,7 @@ const flags = ["🇬🇧", "🇷🇴", "🇪🇸", "🇫🇷"];
 let currentLangIndex = 0;
 
 // Detect and set user's preferred language
-const supportedLangs = ["en", "ro"];
+const supportedLangs = ["en", "ro", "es", "fr"];
 let userLang = localStorage.getItem("lang") || (navigator.language || navigator.userLanguage || "en").slice(0, 2);
 userLang = supportedLangs.includes(userLang) ? userLang : "en";
 
@@ -155,3 +159,5 @@ const button = document.getElementById('getQuoteBtn');
   button.addEventListener('touchend', (e) => {
     e.preventDefault();
   });
+
+  
