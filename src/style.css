@@ -263,6 +263,14 @@ main {
   -ms-user-select: none;
 }
 
+.dice {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 /* Box shadow on hover */
 #getQuoteBtn:hover {
   box-shadow: 0 0 16px var(--clr-green-300);
