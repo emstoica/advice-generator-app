@@ -146,21 +146,28 @@ main {
 
 .advice-card {
   background-color: var(--clr-neutral-blue-900);
-  box-shadow: 0 0 48px var(--clr-neutral-blue-950);
+  box-shadow: 16px 16px 48px var(--clr-neutral-blue-950);
   padding: 3em;
   border-radius: 24px;
   max-height: 600px;
   width: auto;
+
+  margin-left: 2em;
+  margin-right: 2em;
+
+  @media (width < 660px) {
+    padding: 1em;
+  }
 }
 
 .advice-id {
   color: var(--clr-green-300);
 }
 
-@media (width < 600px) {
+@media (width < 660px) {
   .divider img {
     transform: scale(1.5);
-    width: 80%;
+    width: 60%;
   }
 }
 
@@ -170,8 +177,17 @@ main {
   text-wrap: balance;
 
   h2 {
-    font-size: clamp(2em, 3vw, 3em);
+    font-size: clamp(1.75em, 5vw, 3em);
     font-weight: 800;
+  }
+
+  p {
+    font-size: clamp(.75em, 2vw, 1.2em);
+
+  }
+
+  @media (width < 660px) {
+    margin-block: 1em;
   }
 }
 
@@ -187,16 +203,76 @@ main {
     width: auto;
     display: block;
   }
+  
+}
 
+#getQuoteBtn:active {
+  animation: spin 800ms linear infinite;
+  
+}
+
+@media (width >660px) {
+  #getQuoteBtn:hover {
+    box-shadow: 0 0 16px var(--clr-green-300);
+  }
+}
+
+@keyframes spin {
+  from {
+     transform: rotate(0deg) scale(1);
+     box-shadow: 0 0 16px var(--clr-green-300);
+    }
+  to { 
+    transform: rotate(360deg) scale(1.2); 
+    box-shadow: 0 0 48px var(--clr-green-300);
+
+  }
 }
 
 .divider {
   margin-block: 2em;
+
+  @media (width < 660px) {
+    margin: 1em 0 3em 0;
+  }
 }
 
 #langButton {
-  display: inline;
-  height: 2em;
-  width: auto;
-  font-size: 2em;
+  display: block;
+  border: none;
+  border-color: transparent;
+  background-color: transparent;
+  font-size: 3em;
+
+
+}
+
+@media (width < 660px) {
+  #langButton {
+    transform: scale(1.2) translate(8px, 8px);
+  }
+
+  #langButton:active {
+    transform: scale(1.3) translate(8px, 8px);
+  }
+}
+@media (width > 660px) {
+  #langButton:hover  {
+    transform: scale(1.2) translate(8px, 8px);
+    transition: all 0.3s ease-in-out;
+  }
+
+  #langButton:active {
+    transform: scale(1.3) translate(8px, 8px);
+  }
+  
+}
+
+
+.attribution a {
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  color: var(--clr-green-300);
 }
