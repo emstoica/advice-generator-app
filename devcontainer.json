@@ -1,0 +1,43 @@
+{
+    "name": "My Dev Container",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "bradlc.vscode-tailwindcss",
+          "ecmel.vscode-html-css",
+          "esbenp.prettier-vscode",
+          "firefox-devtools.vscode-firefox-debug",
+          "formulahendry.code-runner",
+          "github.codespaces",
+          "github.copilot",
+          "github.copilot-chat",
+          "github.remotehub",
+          "github.vscode-pull-request-github",
+          "grapecity.gc-excelviewer",
+          "mechatroner.rainbow-csv",
+          "ms-edgedevtools.vscode-edge-devtools",
+          "ms-python.debugpy",
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "ms-vscode.azure-repos",
+          "ms-vscode.cmake-tools",
+          "ms-vscode.cpptools",
+          "ms-vscode.cpptools-extension-pack",
+          "ms-vscode.cpptools-themes",
+          "ms-vscode.live-server",
+          "ms-vscode.remote-repositories",
+          "postman.postman-for-vscode",
+          "ritwickdey.liveserver",
+          "tomoki1207.pdf",
+          "twxs.cmake",
+          "vue.volar"
+        ],
+        "settings": {
+          "workbench.colorTheme": "Visual Studio Dark",
+          "editor.formatOnSave": true,
+          "editor.tabSize": 2,
+          "update.mode": "none"
+        }
+      }
+    }
+  }
