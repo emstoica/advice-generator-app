@@ -40,12 +40,6 @@ function updateTexts() {
     element.textContent = translations[lang][key];
   });
 
-  // Optional: update the toggle button label if needed
-  const toggleButton = document.getElementById("toggle-lang");
-  if (toggleButton && translations[lang].button) {
-    toggleButton.textContent = translations[lang].button;
-  }
-
   // Update flag display
   document.getElementById("langButton").innerText = flags[currentLangIndex];
 }

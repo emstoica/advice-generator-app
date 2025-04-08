@@ -94,7 +94,7 @@ textarea:not([rows]) {
 body { 
   background-color: var(--clr-neutral-blue-950);
   color: var(--clr-blue-200);
-
+  margin: 0;
   font-family: 'Manrope', sans-serif;
 }
 
@@ -106,17 +106,20 @@ p {
 
 /* LAYOUT */
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  
-
-}
 
 main {
-  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+
   max-inline-size: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {  
+  position: relative;
 }
 
 .advice-card {
@@ -126,6 +129,7 @@ main {
   align-items: center;
 
   position: relative;
+  z-index: 2;
 }
 
 .divider {
@@ -145,7 +149,13 @@ main {
   bottom: -2.5em;
 }
 
+.attribution {
+  position: fixed;
+  bottom: 0;
+}
+
 /* CARD */
+
 
 .advice-card {
   background-color: var(--clr-neutral-blue-900);
@@ -195,44 +205,6 @@ main {
   }
 }
 
-/* #getQuoteBtn { 
-  background-color: var(--clr-green-300);
-  border-radius: 100%;
-  height: 5em;
-  width: auto;
-  aspect-ratio: 1/1;
-
-  img {
-    height: 40%;
-    width: auto;
-    display: block;
-  }
-  
-}
-
-#getQuoteBtn:active {
-  animation: spin 800ms linear infinite;
-  
-}
-
-@media (width >660px) {
-  #getQuoteBtn:hover {
-    box-shadow: 0 0 16px var(--clr-green-300);
-  }
-}
-
-@keyframes spin {
-  from {
-     transform: rotate(0deg) scale(1);
-     box-shadow: 0 0 16px var(--clr-green-300);
-    }
-  to { 
-    transform: rotate(360deg) scale(1.2); 
-    box-shadow: 0 0 48px var(--clr-green-300);
-
-  }
-} */
-
 #getQuoteBtn { 
   background-color: var(--clr-green-300);
   border-radius: 100%;
@@ -271,16 +243,13 @@ main {
   -ms-user-select: none;
 }
 
-/* Box shadow on hover */
 #getQuoteBtn:hover {
   box-shadow: 0 0 16px var(--clr-green-300);
 }
 
-/* Box shadow when active */
 #getQuoteBtn:active {
   box-shadow: 0 0 48px var(--clr-green-300);
 }
-
 
 .divider {
   margin-block: 2em;
@@ -309,9 +278,15 @@ main {
   }
 }
 
+.langButton-container {
+  position: absolute;
+  top: -7%;
+  left: 10%;
+}
+
 #langButton {
   display: block;
-  font-size: 3em;
+  font-size: clamp(2em, 10vw, 5em);
   background: none;
   border: none;
   padding: 0;
@@ -320,30 +295,28 @@ main {
   cursor: pointer;
   outline: none;
   appearance: none;
+  
+  z-index: 1;
 }
 
+#langButton:hover  {
+  transform: translateY(-15%);
+  transition: all 0.3s ease-in-out;
+}
+
+#langButton:active {
+  transform: scale(1.3);
+  transition: all 0.3s ease-in-out;
+}
 @media (width < 660px) {
   #langButton {
-    transform: scale(1.2) translate(8px, 8px);
-  }
-
-  #langButton:active {
-    transform: scale(1.3) translate(8px, 8px);
+    scale: 1.5;
   }
 }
-@media (width > 660px) {
-  #langButton:hover  {
-    transform: scale(1.2) translate(8px, 8px);
-    transition: all 0.3s ease-in-out;
-  }
 
-  #langButton:active {
-    transform: scale(1.3) translate(8px, 8px);
-  }
-  
-}
 
 .attribution {
+  margin: 1em;
   text-wrap: balance;
 }
 
