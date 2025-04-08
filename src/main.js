@@ -42,6 +42,7 @@ function updateTexts() {
 
   // Update flag display
   document.getElementById("langButton").innerText = flags[currentLangIndex];
+  document.getElementById
 }
 
 // Cycle through languages on button click
@@ -75,7 +76,13 @@ async function getQuote() {
   const quoteBox = document.getElementById("quoteBox");
   
   try {
-    const res = await fetch(`${API_URL}/quote?lang=${lang}`);
+    const res = await fetch("${API_URL}/quote?lang=${lang}", {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.API_SECRET,
+      }
+    });
     
     // Handle response status other than 2xx
     if (!res.ok) {
