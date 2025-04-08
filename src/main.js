@@ -76,8 +76,9 @@ async function getQuote() {
   const quoteBox = document.getElementById("quoteBox");
   
   try {
-    const res = await fetch("${API_URL}/quote?lang=${lang}", {
-      method: "POST",
+
+    const res = await fetch(`${API_URL}/quote?lang=${lang}`, {
+      method: "GET",
       header: {
         "Content-Type": "application/json",
         "x-api-key": import.meta.env.API_SECRET,
