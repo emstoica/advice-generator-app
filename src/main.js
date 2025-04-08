@@ -79,7 +79,7 @@ async function getQuote() {
 
     const res = await fetch(`${API_URL}/quote?lang=${lang}`, {
       method: "GET",
-      header: {
+      headers: {
         "Content-Type": "application/json",
         "x-api-key": import.meta.env.VITE_API_KEY,
       }
