@@ -81,7 +81,7 @@ async function getQuote() {
       method: "GET",
       header: {
         "Content-Type": "application/json",
-        "x-api-key": import.meta.env.VITE_API_SECRET,
+        "x-api-key": import.meta.env.VITE_API_KEY,
       }
     });
     
