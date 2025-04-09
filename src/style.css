@@ -150,6 +150,7 @@ main {
 }
 
 .attribution {
+  margin-top: 3em;
   position: fixed;
   bottom: 0;
 }

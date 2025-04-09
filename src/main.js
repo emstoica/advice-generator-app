@@ -1,24 +1,30 @@
 const translations = {
   en: {
     advice: "Advice #101",
-    quote: "The only limit to our realization of tomorrow is our doubts of today."
+    quote: `"The only limit to our realization of tomorrow is our doubts of today."`
   },
   ro: {
     advice: "Citat motivațional #101",
-    quote: "Singura limită a realizării de mâine sunt îndoielile noastre de astăzi."
+    quote: `"Singura limită a realizării de mâine sunt îndoielile noastre de astăzi."`
   },
   es: {
     advice: "Consejo #101",
-    quote: "El único límite para nuestra realización de mañana son nuestras dudas de hoy."
+    quote: `"El único límite para nuestra realización de mañana son nuestras dudas de hoy."`
   },
   fr: {
     advice: "Conseil #101",
-    quote: "La seule limite à notre réalisation de demain est nos doutes d'aujourd'hui."
+    quote: `"La seule limite à notre réalisation de demain est nos doutes d'aujourd'hui."`
   }
 };
 
 const languages = ["en", "ro", "es", "fr"];
-const flags = ["🇬🇧", "🇷🇴", "🇪🇸", "🇫🇷"];
+const flags = [
+  "src/gb.png",
+  "src/es.png",
+  "src/fr.png",
+  "src/ro.png",
+];
+
 let currentLangIndex = 0;
 
 // Detect and set user's preferred language
@@ -41,8 +47,7 @@ function updateTexts() {
   });
 
   // Update flag display
-  document.getElementById("langButton").innerText = flags[currentLangIndex];
-  document.getElementById
+  document.getElementById("langButton").innerHTML = `<img src="${flags[currentLangIndex]}" alt="${lang}" class="flag-icon">`;
 }
 
 // Cycle through languages on button click
@@ -52,21 +57,6 @@ document.getElementById("langButton").onclick = function () {
   localStorage.setItem("lang", lang);
   updateTexts();
 };
-
-// Language toggle button for en/ro only
-function toggleLanguage() {
-  lang = lang === "en" ? "ro" : "en";
-  currentLangIndex = languages.indexOf(lang);
-  localStorage.setItem("lang", lang);
-  updateTexts();
-}
-
-// On page load
-document.addEventListener("DOMContentLoaded", () => {
-  updateTexts();
-  const toggleBtn = document.getElementById('toggle-lang');
-  if (toggleBtn) toggleBtn.addEventListener('click', toggleLanguage);
-});
 
 
 const API_URL = "https://quotes-api.emanuel-s.workers.dev";
