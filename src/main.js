@@ -97,7 +97,9 @@ async function getQuote() {
     const data = await res.json();
     
     if (!data.quote || !data.author) {
-      throw new Error("Received data does not have the expected format.");
+        quoteBox.innerHTML = `
+        <h2>"${data.quote}"</h2>
+      `;
     }
 
     quoteBox.innerHTML = `
