@@ -19,11 +19,12 @@ const translations = {
 
 const languages = ["en", "ro", "es", "fr"];
 const flags = [
-  "src/gb.png",
-  "src/es.png",
-  "src/fr.png",
-  "src/ro.png",
+  new URL("./assets/gb.png", import.meta.url).href,
+  new URL("./assets/ro.png", import.meta.url).href,
+  new URL("./assets/es.png", import.meta.url).href,
+  new URL("./assets/fr.png", import.meta.url).href,
 ];
+
 
 let currentLangIndex = 0;
 

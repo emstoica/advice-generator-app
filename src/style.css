@@ -120,7 +120,7 @@ main {
 
 .container {  
   position: relative;
-  margin-top: 5em;
+  margin-top: clamp(5em, 5vw, 8em) !important;
 }
 
 .advice-card {
@@ -281,19 +281,47 @@ main {
   object-fit: contain;
   aspect-ratio: 1/1;
   transform: scale(0.8);
-
+  
   top: -2em;
   left: 4em;
- 
+  
 }
 
-@media (width < 660px) {
+@media (width < 1024px) {
   .langButton-container {
     transform: scale(0.3);
     top: -5em;
     left: 0;
   }
 }
+
+@media (width > 1024px) {
+  .langButton-container {
+    transform-origin: bottom center;
+  }
+
+  .langButton-container:hover  {
+    transform: translateY(-70%) scale(0.6);
+    transition: all 0.3s ease-in-out;
+    padding-bottom: 1em;
+  }
+  
+}
+
+.langButton-container:active {
+  transform: translateY(-70%) scale(0.8);
+  transition: all 0.3s ease-in-out;
+
+}
+
+@media (width < 1024px) {
+  .langButton-container:active {
+    transform: scale(0.4);
+    transition: all 0.3s ease-in-out;
+  
+  }
+}
+
 
 #langButton {
   display: block;
@@ -307,22 +335,10 @@ main {
   outline: none;
   appearance: none;
   
+  
   z-index: 1;
 }
 
-@media (width > 1024px) {
-  #langButton:hover  {
-    transform: translateY(-70%) scale(0.6);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  
-}
-
-#langButton:active {
-  transform: scale(1.3);
-  transition: all 0.3s ease-in-out;
-}
 @media (width < 660px) {
   #langButton {
     scale: 1.5;
