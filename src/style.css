@@ -120,6 +120,7 @@ main {
 
 .container {  
   position: relative;
+  margin-top: 5em;
 }
 
 .advice-card {
@@ -149,11 +150,7 @@ main {
   bottom: -2.5em;
 }
 
-.attribution {
-  margin-top: 3em;
-  position: fixed;
-  bottom: 0;
-}
+
 
 /* CARD */
 
@@ -176,8 +173,8 @@ main {
 
   @media (width < 660px) {
     padding: 8px;
-    margin-left: .5em;
-    margin-right: .5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
   }
 }
 
@@ -281,8 +278,21 @@ main {
 
 .langButton-container {
   position: absolute;
-  top: -7%;
-  left: 10%;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+  transform: scale(0.8);
+
+  top: -2em;
+  left: 4em;
+ 
+}
+
+@media (width < 660px) {
+  .langButton-container {
+    transform: scale(0.3);
+    top: -5em;
+    left: 0;
+  }
 }
 
 #langButton {
@@ -300,9 +310,13 @@ main {
   z-index: 1;
 }
 
-#langButton:hover  {
-  transform: translateY(-15%);
-  transition: all 0.3s ease-in-out;
+@media (width > 1024px) {
+  #langButton:hover  {
+    transform: translateY(-70%) scale(0.6);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  
 }
 
 #langButton:active {
@@ -317,8 +331,9 @@ main {
 
 
 .attribution {
-  margin: 1em;
+  margin-top: 8em;
   text-wrap: balance;
+  text-align: left;
 }
 
 .attribution a {
