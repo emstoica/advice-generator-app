@@ -95,12 +95,6 @@ async function getQuote() {
     }
 
     const data = await res.json();
-    
-    if (!data.quote || !data.author) {
-        quoteBox.innerHTML = `
-        <h2>"${data.quote}"</h2>
-      `;
-    }
 
     quoteBox.innerHTML = `
       <h2>"${data.quote}"</h2>
