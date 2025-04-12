@@ -29,9 +29,8 @@ const flags = [
 let currentLangIndex = 0;
 
 // Detect and set user's preferred language
-const supportedLangs = ["en", "ro", "es", "fr"];
 let userLang = localStorage.getItem("lang") || (navigator.language || navigator.userLanguage || "en").slice(0, 2);
-userLang = supportedLangs.includes(userLang) ? userLang : "en";
+userLang = languages.includes(userLang) ? userLang : "en";
 
 // Set currentLangIndex based on userLang
 currentLangIndex = languages.indexOf(userLang);
@@ -59,15 +58,24 @@ document.getElementById("langButton").onclick = function () {
   updateTexts();
 };
 
+// Run on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateTexts();
+  document.getElementById('langButton').addEventListener('click', toggleLanguage);
+});
 
 const API_URL = "https://quotes-api.emanuel-s.workers.dev";
+
+const button = document.getElementById('getQuoteBtn');
+const img = button.querySelector('img');
 
 async function getQuote() {
   const lang = languages[currentLangIndex];
   const quoteBox = document.getElementById("quoteBox");
-  
-  try {
 
+  img.classList.add('spin'); // Start continuous spin
+
+  try {
     const res = await fetch(`${API_URL}/quote?lang=${lang}`, {
       method: "GET",
       headers: {
@@ -75,8 +83,7 @@ async function getQuote() {
         "x-api-key": import.meta.env.VITE_API_KEY,
       }
     });
-    
-    // Handle response status other than 2xx
+
     if (!res.ok) {
       if (res.status === 429) {
         const data = await res.json();
@@ -86,66 +93,20 @@ async function getQuote() {
     }
 
     const data = await res.json();
-
     quoteBox.innerHTML = `
       <h2>"${data.quote}"</h2>
       <p>— ${data.author}</p>
     `;
   } catch (error) {
     console.error(error);
-
     if (error.message.includes("CORS")) {
       quoteBox.innerText = "CORS error: Unable to access the API. Please check your configuration.";
     } else {
       quoteBox.innerText = error.message || "Error fetching quote. Please try again later.";
     }
+  } finally {
+    img.classList.remove('spin'); // Stop spin after fetch
   }
 }
 
-const button = document.getElementById('getQuoteBtn');
-const img = button.querySelector('img'); // <-- image tag with the SVG
-let isSpinning = false;
-
-// Function to handle the spinning animation
-const startSpin = () => {
-  if (isSpinning) return;
-  isSpinning = true;
-
-  button.style.transition = 'transform 2s linear, box-shadow 2s linear';
-  button.style.transform = 'rotate(360deg) scale(1.2)';
-  button.style.boxShadow = '0 0 48px var(--clr-green-300)';
-
-  setTimeout(() => {
-    button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-    button.style.transform = 'rotate(0deg) scale(1)';
-    button.style.boxShadow = '0 0 16px var(--clr-green-300)';
-    isSpinning = false;
-  }, 1200);
-};
-
-// Function to trigger both the animation and the quote fetch
-const handleQuoteButtonPress = (e) => {
-  e.preventDefault(); // prevent long-press selections, etc.
-  startSpin();
-  getQuote();
-};
-
-// Desktop and mobile support
-button.addEventListener('click', handleQuoteButtonPress);
-button.addEventListener('touchend', handleQuoteButtonPress);
-
-// Optional: hover effect (desktop only)
-button.addEventListener('mouseenter', () => {
-  button.style.boxShadow = '0 0 16px var(--clr-green-300)';
-});
-button.addEventListener('mouseleave', () => {
-  if (!isSpinning) {
-    button.style.boxShadow = '0 0 8px var(--clr-green-300)';
-  }
-});
-
-// Prevent long press selection or drag on SVG image
-img.addEventListener('touchstart', (e) => e.preventDefault());
-img.addEventListener('dragstart', (e) => e.preventDefault());
-
-  
+button.addEventListener('click', getQuote);
