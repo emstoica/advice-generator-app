@@ -76,7 +76,7 @@ async function getQuote() {
   img.classList.add("spin");
 
   try {
-    const res = await fetch(`/api/quote?lang=${lang}`);
+    const res = await fetch(`/quote?lang=${lang}`);
 
     if (!res.ok) {
       throw new Error(`Failed to fetch quote: ${res.statusText}`);
