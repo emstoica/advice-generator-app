@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   // Base public path (adjust for your deployment)
-  base: '/advice-generator/',
+  base: './',
   
   build: {
     // Where to output built files
