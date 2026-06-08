@@ -73,39 +73,27 @@ async function getQuote() {
   const lang = languages[currentLangIndex];
   const quoteBox = document.getElementById("quoteBox");
 
-  img.classList.add('spin'); // Start continuous spin
+  img.classList.add("spin");
 
   try {
-    const res = await fetch(`${API_URL}/quote?lang=${lang}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": import.meta.env.VITE_API_KEY,
-      }
-    });
+    const res = await fetch(`/api/quote?lang=${lang}`);
 
     if (!res.ok) {
-      if (res.status === 429) {
-        const data = await res.json();
-        throw new Error(data.error || "Rate limit exceeded. Please try again later.");
-      }
       throw new Error(`Failed to fetch quote: ${res.statusText}`);
     }
 
     const data = await res.json();
+
     quoteBox.innerHTML = `
       <h2>"${data.quote}"</h2>
       <p>— ${data.author}</p>
     `;
   } catch (error) {
     console.error(error);
-    if (error.message.includes("CORS")) {
-      quoteBox.innerText = "CORS error: Unable to access the API. Please check your configuration.";
-    } else {
-      quoteBox.innerText = error.message || "Error fetching quote. Please try again later.";
-    }
+    quoteBox.innerText =
+      error.message || "Error fetching quote. Please try again later.";
   } finally {
-    img.classList.remove('spin'); // Stop spin after fetch
+    img.classList.remove("spin");
   }
 }
 
